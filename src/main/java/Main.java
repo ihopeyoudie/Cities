@@ -8,8 +8,8 @@ import java.awt.*;
  */
 public class Main {
     public static void main(String[] args) {
-        MainFrame mainFrame = new MainFrame("GAME");
-        mainFrame.init();
+        //MainFrame mainFrame = new MainFrame("GAME");
+        //mainFrame.init();
 
     }
 }
