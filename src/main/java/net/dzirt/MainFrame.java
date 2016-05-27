@@ -17,5 +17,6 @@ public class MainFrame extends JFrame{
         setLayout(new GridLayout());
         setVisible(true);
 
+
     }
 }
