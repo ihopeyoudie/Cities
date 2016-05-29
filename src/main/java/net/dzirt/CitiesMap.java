@@ -66,7 +66,7 @@ public class CitiesMap {
 
                 //System.out.println(firstLetter+ " - " + stArray.length+ " :" +itemIndex );
                 String city = stArray[itemIndex];
-                cts.remove(city);
+                //cts.remove(city);
                 return stArray[itemIndex];
             }
         }
@@ -74,6 +74,21 @@ public class CitiesMap {
             System.out.println(e);
         }
         return null;
+    }
+
+    public boolean removeCity(String city){
+        try {
+            HashSet<String> cts;
+            cts = citiesMap.get(city.charAt(0));
+            if (cts.size()>0) {
+                 cts.remove(city);
+                return true;
+            }
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
     }
 
     public Character getNextCityChar(String city){
