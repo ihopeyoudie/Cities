@@ -1,3 +1,4 @@
+import net.dzirt.CitiesGame;
 import net.dzirt.CitiesMap;
 import net.dzirt.MainFrame;
 import java.io.File;
@@ -9,9 +10,13 @@ public class Main {
     public static void main(String[] args) {
         //MainFrame mainFrame = new MainFrame("GAME");
         //mainFrame.init();
-        CitiesMap map = new CitiesMap();
-        File f = new File("D:\\java\\projects\\Cities\\src\\main\\resources\\cities.txt");
-        map.buildMap(f);
-        map.printMap();
+        CitiesGame game = new CitiesGame();
+        game.gameInit();
+        try{
+            game.gameStart();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
     }
 }

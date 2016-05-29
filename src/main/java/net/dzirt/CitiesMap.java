@@ -24,7 +24,7 @@ public class CitiesMap {
                 firstLetter = Character.toUpperCase(s.charAt(0));
                 if (citiesMap.containsKey(firstLetter)){
                     tempSet = citiesMap.get(firstLetter);
-                    tempSet.add(s);
+                    tempSet.add(s.toUpperCase());
                 }
             }
         }
@@ -33,17 +33,51 @@ public class CitiesMap {
         }
     }
 
-    public boolean cityInMap (){
+    public boolean cityInMap (String city){
 
+        HashSet<String> cts;
+        city = city.toUpperCase();
+        Character firstLetter = city.charAt(0);
+        cts = citiesMap.get(firstLetter);
+        if (cts.size()>0) {
+            if (cts.contains(city.toUpperCase())) return true;
+        }
+        return false;
+    }
+    public boolean nextCityExist (Character nextCityLetter){
+        HashSet<String> cts;
+        cts = citiesMap.get(nextCityLetter);
+        if (cts.size()>0) {
+            return true;
+        }
         return false;
     }
 
-    public String getRandomCitiByChar(Character firstLetter){
 
+
+    public String getRandomCityByChar(Character firstLetter){
+        try {
+            HashSet<String> cts;
+            cts = citiesMap.get(firstLetter);
+            if (cts.size()>0) {
+                String[] stArray = cts.toArray(new String[cts.size()]);
+
+                int itemIndex = (int) (Math.random() * stArray.length);
+
+                //System.out.println(firstLetter+ " - " + stArray.length+ " :" +itemIndex );
+                String city = stArray[itemIndex];
+                cts.remove(city);
+                return stArray[itemIndex];
+            }
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
         return null;
     }
 
     public Character getNextCityChar(String city){
+        city = city.toUpperCase();
         return(city.charAt(city.length()-1));
     }
 
