@@ -33,15 +33,22 @@ public class CitiesMap {
         }
     }
 
-    public boolean cityInMap (String city){
-
-        HashSet<String> cts;
-        city = city.toUpperCase();
-        Character firstLetter = city.charAt(0);
-        cts = citiesMap.get(firstLetter);
-        if (cts.size()>0) {
-            if (cts.contains(city.toUpperCase())) return true;
-        }
+    public boolean cityInMap(String city){
+//        try {
+            HashSet<String> cts;
+            city = city.toUpperCase();
+            Character firstLetter = city.charAt(0);
+            if (citiesMap.containsKey(firstLetter)) {
+                cts = citiesMap.get(firstLetter);
+                if (cts.size() > 0) {
+                    if (cts.contains(city.toUpperCase())) return true;
+                }
+            }
+//        }
+//        catch (Exception e)
+//        {
+//            e.printStackTrace(System.out);
+//        }
         return false;
     }
     public boolean nextCityExist (Character nextCityLetter){
@@ -93,7 +100,12 @@ public class CitiesMap {
 
     public Character getNextCityChar(String city){
         city = city.toUpperCase();
-        return(city.charAt(city.length()-1));
+        Character lastChar;
+        lastChar = city.charAt(city.length()-1);
+        if((lastChar == 'Ь')||(lastChar == 'Й')){
+            lastChar = city.charAt(city.length()-2);
+        }
+        return lastChar;
     }
 
     public void printMap(){
