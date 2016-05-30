@@ -11,7 +11,7 @@ public class MainFrame extends JFrame {
     // Variables declaration
     private JButton buttonExit;
     private JButton buttonEnter;
-    private JLabel label1 = new JLabel("Следующая буква");
+    private JLabel labelHelp = new JLabel("Ввеите название города");
     private JLabel labelNextChar;
     private JPanel panel1;
     //private JScrollPane jScrollPane1;
@@ -30,6 +30,7 @@ public class MainFrame extends JFrame {
         /**
          * Init Frame
         */
+        setTitle("GAME");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocation(600,400);
         setSize(400,400);
@@ -38,41 +39,44 @@ public class MainFrame extends JFrame {
         setLayout(new GridBagLayout());
         //buttonExit = new JButton("Exit");
         textFieldComp = new JTextField();
-        textFieldComp.enableInputMethods(false);
+        textFieldComp.setEnabled(false);
+        textFieldComp.setDisabledTextColor(Color.BLACK);
+        //textFieldComp.setText("Testing");
         add(textFieldComp, new GridBagConstraints(0,0,3,1,1,1,
                 GridBagConstraints.CENTER,GridBagConstraints.BOTH,
-                new Insets(1,1,1,1),10,10));
+                new Insets(1,1,1,1),200,0));
 
         textFieldPlayer = new JTextField();
         add(textFieldPlayer, new GridBagConstraints(0,2,3,1,1,1,
                 GridBagConstraints.CENTER,GridBagConstraints.BOTH,
-                new Insets(1,1,1,1),10,10));
+                new Insets(1,1,1,1),0,0));
 
-        add(label1, new GridBagConstraints(0,1,2,1,1,1,
+        add(labelHelp, new GridBagConstraints(0,1,2,1,1,1,
                 GridBagConstraints.CENTER,GridBagConstraints.BOTH,
-                new Insets(1,1,1,1),10,10));
+                new Insets(1,1,1,1),0,0));
 
-        labelNextChar = new JLabel("B");
+        labelNextChar = new JLabel("");
         add(labelNextChar, new GridBagConstraints(2,1,1,1,1,1,
                 GridBagConstraints.CENTER,GridBagConstraints.BOTH,
-                new Insets(1,1,1,1),10,10));
+                new Insets(1,1,1,1),0,0));
 
         buttonEnter = new JButton("ENTER");
         add(buttonEnter, new GridBagConstraints(0,3,3,1,1,1,
                 GridBagConstraints.CENTER,GridBagConstraints.BOTH,
-                new Insets(1,1,1,1),10,10));
+                new Insets(1,1,1,1),0,0));
 
         textPaneGameLog = new JTextArea();
+        textPaneGameLog.setEnabled(false);
+        textPaneGameLog.setDisabledTextColor(Color.BLACK);
+
         add(textPaneGameLog, new GridBagConstraints(3,0,3,5,1,1,
                 GridBagConstraints.CENTER,GridBagConstraints.BOTH,
-                new Insets(1,1,1,1),100,100));
+                new Insets(1,1,1,1),150,300));
 
-        textPaneGameLog.append("aff\n");
-        textPaneGameLog.append("aff");
-        textPaneGameLog.append("aff");
         setVisible(true);
-        //pack();
+        pack();
     }
-
-
+    public void setLabelHelp(String s){
+        labelHelp.setText(s);
+    }
 }
