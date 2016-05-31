@@ -54,13 +54,8 @@ public class CitiesMap {
     public boolean nextCityExist (Character nextCityLetter){
         HashSet<String> cts;
         cts = citiesMap.get(nextCityLetter);
-        if (cts.size()>0) {
-            return true;
-        }
-        return false;
+        return cts.size() > 0;
     }
-
-
 
     public String getRandomCityByChar(Character firstLetter){
         try {
@@ -68,12 +63,7 @@ public class CitiesMap {
             cts = citiesMap.get(firstLetter);
             if (cts.size()>0) {
                 String[] stArray = cts.toArray(new String[cts.size()]);
-
                 int itemIndex = (int) (Math.random() * stArray.length);
-
-                //System.out.println(firstLetter+ " - " + stArray.length+ " :" +itemIndex );
-                String city = stArray[itemIndex];
-                //cts.remove(city);
                 return stArray[itemIndex];
             }
         }

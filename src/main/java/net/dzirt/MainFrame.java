@@ -2,8 +2,8 @@ package net.dzirt;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 
 /**
  *
@@ -15,7 +15,6 @@ public class MainFrame extends JFrame {
     private JButton buttonEnter;
     private JLabel labelHelp = new JLabel("Ввеите название города");
     private JLabel labelNextChar;
-    private JPanel panel1;
     //private JScrollPane jScrollPane1;
     private JTextField textFieldPlayer;
     private JTextField textFieldComp;
@@ -29,9 +28,7 @@ public class MainFrame extends JFrame {
 
     }
 
-    public void setButtonAL (ActionListener a){
-        buttonEnter.addActionListener(a);
-    }
+
 
     public void initComponents() {
         /**
@@ -41,14 +38,15 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocation(600,400);
         setSize(400,400);
-
         setResizable(false);
         setLayout(new GridBagLayout());
-        //buttonExit = new JButton("Exit");
+
+
         textFieldComp = new JTextField();
         textFieldComp.setEnabled(false);
         textFieldComp.setDisabledTextColor(Color.BLACK);
-        //textFieldComp.setText("Testing");
+
+
         add(textFieldComp, new GridBagConstraints(0,0,3,1,1,1,
                 GridBagConstraints.CENTER,GridBagConstraints.BOTH,
                 new Insets(1,1,1,1),200,0));
@@ -68,19 +66,23 @@ public class MainFrame extends JFrame {
                 new Insets(1,1,1,1),40,40));
 
         buttonEnter = new JButton("ENTER");
-        //buttonEnter.addActionListener(new ButtonEnterActionListener());
         add(buttonEnter, new GridBagConstraints(0,3,3,1,1,1,
                 GridBagConstraints.CENTER,GridBagConstraints.BOTH,
                 new Insets(1,1,1,1),0,0));
 
         textPaneGameLog = new JTextArea();
+        JScrollPane scroll = new JScrollPane (textPaneGameLog);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        add(scroll);
+        textPaneGameLog.setLineWrap(true);
         textPaneGameLog.setEnabled(false);
         textPaneGameLog.setDisabledTextColor(Color.BLACK);
-
-        add(textPaneGameLog, new GridBagConstraints(3,0,3,5,1,1,
+        scroll.setAutoscrolls(true);
+        add(scroll, new GridBagConstraints(3,0,3,5,1,1,
                 GridBagConstraints.CENTER,GridBagConstraints.BOTH,
                 new Insets(1,1,1,1),150,300));
-
+        //textPaneGameLog.append("1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n21\n1\n1\n");
         setVisible(true);
         pack();
     }
@@ -103,10 +105,12 @@ public class MainFrame extends JFrame {
     public void addToLog(String s){
         textPaneGameLog.append(s+ "\n");
     }
-//    public class ButtonEnterActionListener implements ActionListener{
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            System.out.println("sf;sjn;gn;erogo;");
-//        }
-//    }
+    public void setButtonAL (ActionListener a){
+        buttonEnter.addActionListener(a);
+    }
+
+    public void setTextFieldPlayerKeyListener(KeyListener a){
+        textFieldPlayer.addKeyListener(a);
+    }
+
 }
