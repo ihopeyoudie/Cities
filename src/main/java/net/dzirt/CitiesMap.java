@@ -99,13 +99,16 @@ public class CitiesMap {
     }
 
     public Character getNextCityChar(String city){
-        city = city.toUpperCase();
-        Character lastChar;
-        lastChar = city.charAt(city.length()-1);
-        if((lastChar == 'Ь')||(lastChar == 'Й')){
-            lastChar = city.charAt(city.length()-2);
+        if (city != null) {
+            city = city.toUpperCase();
+            Character lastChar;
+            lastChar = city.charAt(city.length() - 1);
+            if ((lastChar == 'Ь') || (lastChar == 'Й')) {
+                lastChar = city.charAt(city.length() - 2);
+            }
+            return lastChar;
         }
-        return lastChar;
+        return '0';
     }
 
     public void printMap(){

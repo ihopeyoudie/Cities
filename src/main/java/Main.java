@@ -10,8 +10,8 @@ public class Main {
     public static void main(String[] args) {
         //MainFrame mainFrame = new MainFrame("GAME");
         //mainFrame.init();
-        MainFrame mainFrame = new MainFrame();
-        mainFrame.initComponents();
+//        MainFrame mainFrame = new MainFrame();
+//        mainFrame.initComponents();
         //mainFrame.setVisible(true);
 
         CitiesGame game = new CitiesGame();
